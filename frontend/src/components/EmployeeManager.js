@@ -1,7 +1,5 @@
-// src/EmployeeManager.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 
 const EmployeeManager = () => {
   const [list, setList] = useState([]);
@@ -20,25 +18,40 @@ const EmployeeManager = () => {
     fetchEmployees();
   }, []);
 
+  // Updated API URL
+  const apiUrl = 'https://codetribe2024-node-employee-1-backend.onrender.com';
+
   const fetchEmployees = async () => {
-    const response = await axios.get('http://localhost:5000/employees');
-    setList(response.data);
+    try {
+      const response = await axios.get(`${apiUrl}/employees`);
+      setList(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the employees:", error);
+    }
   };
 
   const addOrUpdateEmployee = async () => {
-    if (isEditing) {
-      await axios.put(`http://localhost:5000/employees/${isEditing}`, input);
-      setIsEditing(null);
-    } else {
-      await axios.post('http://localhost:5000/employees/add', input);
+    try {
+      if (isEditing) {
+        await axios.put(`${apiUrl}/employees/${isEditing}`, input);
+        setIsEditing(null);
+      } else {
+        await axios.post(`${apiUrl}/employees/add`, input);
+      }
+      setInput({ id: '', name: '', surname: '', age: '', role: '' });
+      fetchEmployees();
+    } catch (error) {
+      console.error("There was an error adding/updating the employee:", error);
     }
-    setInput({ id: '', name: '', surname: '', age: '', role: '' });
-    fetchEmployees();
   };
 
   const deleteEmployee = async (id) => {
-    await axios.delete(`http://localhost:5000/employees/${id}`);
-    fetchEmployees();
+    try {
+      await axios.delete(`${apiUrl}/employees/${id}`);
+      fetchEmployees();
+    } catch (error) {
+      console.error("There was an error deleting the employee:", error);
+    }
   };
 
   const editEmployee = (employee) => {
