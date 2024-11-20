@@ -47,7 +47,7 @@ const EmployeeManager = () => {
 
   const deleteEmployee = async (id) => {
     try {
-      await axios.delete(`${apiUrl}/employees/${id}`);
+      await axios.delete(`https://codetribe2024-node-employee-1-backend.onrender.com/employees/${id}`);
       fetchEmployees();
     } catch (error) {
       console.error("There was an error deleting the employee:", error);
