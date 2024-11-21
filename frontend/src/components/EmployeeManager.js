@@ -123,20 +123,20 @@ const EmployeeManager = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredList.map((employee) => (
-           <tr key={`${employee.id}-${index}`}>
-             <td>{employee.id}</td>
-              <td>{employee.name}</td>
-              <td>{employee.surname}</td>
-              <td>{employee.age}</td>
-              <td>{employee.role}</td>
-              <td>
-                <button onClick={() => editEmployee(employee)}>Edit</button>
-                <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {filteredList.map((employee, index) => (  // 'index' is now correctly defined here
+    <tr key={`${employee.id}-${index}`}>
+      <td>{employee.id}</td>
+      <td>{employee.name}</td>
+      <td>{employee.surname}</td>
+      <td>{employee.age}</td>
+      <td>{employee.role}</td>
+      <td>
+        <button onClick={() => editEmployee(employee)}>Edit</button>
+        <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
       </table>
     </div>
   );
