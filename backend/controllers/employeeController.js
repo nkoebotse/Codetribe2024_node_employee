@@ -9,7 +9,7 @@ const addEmployee = async (req, res) => {
   try {
     const employeeRef = collection(db, 'employees');
     const newEmployee = await addDoc(employeeRef, req.body);
-    res.status(201).json({ id: newEmployee.id, ...req.body });
+    res.status(201).json({  employeeId: newEmployee. employeeId, ...req.body });
   } catch (error) {
     res.status(500).json({ error: 'Error adding employee', details: error.message });
   }
