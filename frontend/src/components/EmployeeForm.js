@@ -4,7 +4,7 @@ import React from 'react';
 const EmployeeForm = ({ input, setInput, handleFileChange, addOrUpdateTodo, isEditing }) => {
   return (
     <div>
-      <input type="text" value={input.ID} placeholder="ID" onChange={(e) => setInput({ ...input, ID: e.target.value })} />
+      <input type="text" value={input. employeeId} placeholder="ID" onChange={(e) => setInput({ ...input,  employeeId: e.target.value })} />
       <input type="text" value={input.name} placeholder="Name and Surname" onChange={(e) => setInput({ ...input, name: e.target.value })} />
       <input type="text" value={input.surname} placeholder="Email address" onChange={(e) => setInput({ ...input, surname: e.target.value })} />
       <input type="text" value={input.phone} placeholder="Phone Number" onChange={(e) => setInput({ ...input, phone: e.target.value })} />
