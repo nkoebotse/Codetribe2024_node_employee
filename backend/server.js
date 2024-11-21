@@ -1,22 +1,21 @@
+// backend/server.js
 const express = require('express');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const employeeRoutes = require('./routes/employeeRoutes');
 
 const app = express();
-
 
 // Define allowed origins
 const allowedOrigins = [
   'http://localhost:3000', // Replace with your frontend's local address
-  'https://codetribe2024-node-employee.onrender.com' // Replace with your deployed frontend address
+  'https://codetribe2024-node-employee.onrender.com', // Replace with your deployed frontend address
 ];
 
 // Configure CORS
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (e.g., mobile apps, curl requests)
-    if (!origin) return callback(null, true);
-
-    // Check if the origin is in the allowedOrigins array
+    if (!origin) return callback(null, true); // Allow mobile apps and curl requests
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -26,17 +25,16 @@ const corsOptions = {
   credentials: true, // Allow cookies and authentication headers
 };
 
-// Use CORS middleware with the specified options
+// Use CORS middleware
 app.use(cors(corsOptions));
 
-
-// Your other middlewares, like body parser, go here
+// Parse JSON request bodies
 app.use(express.json());
 
-// Your routes go here
-// Example route
-app.use('/employees', require('./routes/employeeRoutes')); // Adjust route as needed
+// Use routes for employee-related API calls
+app.use('/employees', employeeRoutes);
 
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
