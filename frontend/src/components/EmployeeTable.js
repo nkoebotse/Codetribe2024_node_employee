@@ -18,7 +18,7 @@ const EmployeeTable = ({ list, editTodo, deleteTodo }) => {
       <tbody>
         {list.map((todo) => (
           <tr key={todo.id}>
-            <td>{todo.ID}</td>
+            <td>{todo. employeeId}</td>
             <td>{todo.name}</td>
             <td>{todo.surname}</td>
             <td>{todo.phone}</td>
