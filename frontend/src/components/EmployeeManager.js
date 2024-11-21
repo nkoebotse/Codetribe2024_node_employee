@@ -123,8 +123,8 @@ const EmployeeManager = () => {
           </tr>
         </thead>
         <tbody>
-  {filteredList.map((employee, index) => (  // 'index' is now correctly defined here
-    <tr key={`${employee.id}-${index}`}>
+  {filteredList.map((employee, index) => (
+    <tr key={`${employee.id}-${index}`}> {/* Ensures the key is unique */}
       <td>{employee.id}</td>
       <td>{employee.name}</td>
       <td>{employee.surname}</td>
