@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -28,13 +27,9 @@ const corsOptions = {
 // Use CORS middleware
 app.use(cors(corsOptions));
 
-// Parse JSON request bodies
-app.use(express.json());
-
-// Use routes for employee-related API calls
+// Use the employee routes
 app.use('/employees', employeeRoutes);
 
-// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
