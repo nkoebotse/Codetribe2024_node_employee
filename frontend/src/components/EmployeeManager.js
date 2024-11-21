@@ -4,7 +4,7 @@ import axios from "axios";
 const EmployeeManager = () => {
   const [list, setList] = useState([]);
   const [input, setInput] = useState({
-    id: '',
+    employeeId: '',
     name: '',
     surname: '',
     age: '',
