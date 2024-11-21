@@ -137,7 +137,7 @@ const EmployeeManager = () => {
     </tr>
   ))}
 </tbody>
-      </table>
+</table>
     </div>
   );
 };
