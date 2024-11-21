@@ -124,8 +124,8 @@ const EmployeeManager = () => {
         </thead>
         <tbody>
           {filteredList.map((employee) => (
-            <tr key={employee.id}>
-              <td>{employee.id}</td>
+           <tr key={`${employee.id}-${index}`}>
+             <td>{employee.id}</td>
               <td>{employee.name}</td>
               <td>{employee.surname}</td>
               <td>{employee.age}</td>
