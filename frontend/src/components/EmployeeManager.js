@@ -38,16 +38,16 @@ const EmployeeManager = () => {
       } else {
         await axios.post(`${apiUrl}/employees/add`, input);
       }
-      setInput({ id: '', name: '', surname: '', age: '', role: '' });
+      setInput({  employeeId: '', name: '', surname: '', age: '', role: '' });
       fetchEmployees();
     } catch (error) {
       console.error("There was an error adding/updating the employee:", error);
     }
   };
 
-  const deleteEmployee = async (id) => {
+  const deleteEmployee = async ( employeeId) => {
     try {
-      await axios.delete(`${apiUrl}/employees/${id}`);
+      await axios.delete(`${apiUrl}/employees/${ employeeId}`);
       fetchEmployees();
     } catch (error) {
       console.error("There was an error deleting the employee:", error);
@@ -56,11 +56,11 @@ const EmployeeManager = () => {
 
   const editEmployee = (employee) => {
     setInput(employee);
-    setIsEditing(employee.id);
+    setIsEditing(employee. employeeId);
   };
 
   const filteredList = list.filter(employee =>
-    employee.id.includes(searchQuery)
+    employee. employeeId.includes(searchQuery)
   );
 
   return (
