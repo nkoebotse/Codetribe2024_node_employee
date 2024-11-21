@@ -7,7 +7,8 @@ const app = express();
 // Define allowed origins
 const allowedOrigins = [
   'http://localhost:3000', // Replace with your frontend's local address
-  'https://codetribe2024-node-employee.onrender.com', // Replace with your deployed frontend address
+  'https://codetribe2024-node-employee.onrender.com',
+  'https://codetribe2024-node-employee-1-new.onrender.com' // Replace with your deployed frontend address
 ];
 
 // Configure CORS
